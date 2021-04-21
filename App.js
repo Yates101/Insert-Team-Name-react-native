@@ -3,10 +3,11 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } from 'react-native';
 
 export default function App() {
+
   return (
     <SafeAreaView>
       <View style={styles.header}>
-        <Text style={styles.text}>Acebook</Text>
+        <Text style={styles.text}>acebook</Text>
       </View>
         <View style={styles.container}>
           <TextInput style={styles.textInput}
@@ -18,12 +19,12 @@ export default function App() {
           <View style={styles.buttonContainer}>
             <Button title="submit" style={styles.button}/>
           </View>
+          <Text>Not a user yet?</Text>
+          <Text>Create an account!</Text>
         </View>
     </SafeAreaView>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
