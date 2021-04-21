@@ -1,8 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } from 'react-native';
+import axios from 'axios';
+
 
 export default function App() {
+  const [user, setUser] = useState([])
+
+  const getUser = async() => {
+    await axios.get("https://acebook--backend.herokuapp.com/users/1").then((res) => {
+      setUser(res.data)  
+    })
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
 
   return (
     <SafeAreaView>
@@ -10,6 +23,7 @@ export default function App() {
         <Text style={styles.text}>acebook</Text>
       </View>
         <View style={styles.container}>
+        <Text>{user.forename}</Text>
           <TextInput style={styles.textInput}
             placeholder="email"
           />
