@@ -1,32 +1,47 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } from 'react-native';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.header}>
-      <Text style={styles.text}>Acebook</Text>
-        <View>
-          <TextInput style={styles.textInput}/>
+    <SafeAreaView>
+      <View style={styles.header}>
+        <Text style={styles.text}>Acebook</Text>
+      </View>
+        <View style={styles.container}>
+          <TextInput style={styles.textInput}
+            placeholder="email"
+          />
+          <TextInput style={styles.textInput}
+            placeholder="password"
+          />
+          <View style={styles.buttonContainer}>
+            <Button title="submit" style={styles.button}/>
+          </View>
         </View>
     </SafeAreaView>
   );
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#696969',
     alignItems: 'center',
     justifyContent: 'center',
+    height: '100%',
   },
 
   header: {
-  
-    width: '100%',
-    height: '10%',
-    backgroundColor: '#179aff',
-    alignItems: 'flex-end',
+      alignSelf: 'stretch',
+      height: 52,
+      flexDirection: 'row', // row
+      backgroundColor: '#179aff',
+      alignItems: 'flex-end',
+      justifyContent: 'space-between', // center, space-around
+      paddingLeft: 10,
+      paddingRight: 10
     },
 
   text: {
@@ -46,6 +61,17 @@ const styles = StyleSheet.create({
     paddingRight: 14,
     fontSize: 16,
     color: 'black',
+    backgroundColor: 'white',
+    width: 200,
   },
+
+  button: {
+    color: 'white',
+    width: 100,
+  },
+
+  buttonContainer: {
+    backgroundColor: 'blue',
+  }
 
 });
