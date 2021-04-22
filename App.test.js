@@ -9,8 +9,8 @@ test('it works', () => {
 });
 
 describe("<App />", () => {
-    it('has 7 children', () => {
+    it('has 2 children', () => {
         const tree = renderer.create(<App />).toJSON();
-        expect(tree.children.length).toBe(7);
+        expect(tree.children.length).toBe(2);
     });
 });

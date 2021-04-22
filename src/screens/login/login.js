@@ -16,7 +16,7 @@ const LogIn = () => {
           />
           <View style={styles.buttonContainer}>
             <Button title="submit" style={styles.button}/>
-            </View>
+          </View>
             <Text>Not a user yet?</Text>
             <Text>Create an account!</Text>
     </View>
