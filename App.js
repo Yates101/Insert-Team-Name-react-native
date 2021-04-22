@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } from 'react-native';
 import axios from 'axios';
-
+import { LogIn } from './src/screens/';
 
 export default function App() {
   const [user, setUser] = useState([])
@@ -22,20 +22,22 @@ export default function App() {
       <View style={styles.header}>
         <Text style={styles.text}>acebook</Text>
       </View>
-        <View style={styles.container}>
+
+      <LogIn/>
+      {/* <View style={styles.container}>
         <Text>{user.forename}</Text>
-          <TextInput style={styles.textInput}
-            placeholder="email"
-          />
-          <TextInput style={styles.textInput}
-            placeholder="password"
-          />
-          <View style={styles.buttonContainer}>
-            <Button title="submit" style={styles.button}/>
-          </View>
-          <Text>Not a user yet?</Text>
-          <Text>Create an account!</Text>
+        <TextInput style={styles.textInput}
+          placeholder="email"
+        />
+        <TextInput style={styles.textInput}
+          placeholder="password"
+        />
+        <View style={styles.buttonContainer}>
+          <Button title="submit" style={styles.button}/>
         </View>
+        <Text>Not a user yet?</Text>
+        <Text>Create an account!</Text>
+      </View> */}
     </SafeAreaView>
   );
 }
