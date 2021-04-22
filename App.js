@@ -24,20 +24,7 @@ export default function App() {
       </View>
 
       <LogIn/>
-      {/* <View style={styles.container}>
-        <Text>{user.forename}</Text>
-        <TextInput style={styles.textInput}
-          placeholder="email"
-        />
-        <TextInput style={styles.textInput}
-          placeholder="password"
-        />
-        <View style={styles.buttonContainer}>
-          <Button title="submit" style={styles.button}/>
-        </View>
-        <Text>Not a user yet?</Text>
-        <Text>Create an account!</Text>
-      </View> */}
+      
     </SafeAreaView>
   );
 }
