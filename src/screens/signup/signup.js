@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
 import axios from 'axios';
 
-const LogIn = () => {
- 
-  return (
-    
+const SignUp = () => {
+
+  return(
     <View style={styles.container}>
-          <TextInput style={styles.textInput}
-            placeholder="email"
-          />
-          <TextInput style={styles.textInput}
-            placeholder="password"
-          />
-          <View style={styles.buttonContainer}>
-            <Button title="submit" style={styles.button}/>
-          </View>
-            <Text>Not a user yet?</Text>
-            <Text>Create an account!</Text>
+      <TextInput style={styles.textInput}
+        placeholder="first name"
+      />
+      <TextInput style={styles.textInput}
+        placeholder="last name"
+      />
+      <TextInput style={styles.textInput}
+        placeholder="username"
+      />
+      <TextInput style={styles.textInput}
+        placeholder="email"
+      />
+      <TextInput style={styles.textInput}
+        placeholder="password"
+      />      
+        
+      <View style={styles.buttonContainer}>
+        <Button title="sign up" style={styles.button}/>
+      </View>
     </View>
-  );
+  )            
 };
 
 const styles = StyleSheet.create({
@@ -58,4 +65,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {LogIn};
+export {SignUp};

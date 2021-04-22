@@ -9,10 +9,13 @@ test('it works', () => {
 });
 
 describe("<LogIn />", () => {
+  const tree = renderer.create(<LogIn />).toJSON();
+
+  it('renders correctly', () => {
+    expect(tree).toMatchSnapshot();
+  })
+
   it('has 5 children', () => {
-      const tree = renderer.create(<LogIn />).toJSON();
-      expect(tree.children.length).toBe(5);
+    expect(tree.children.length).toBe(5);
   });
 });
-
-describe()

@@ -2,6 +2,8 @@
 
 ```
 yarn add --dev jest jest-expo jest-fetch-mock @testing-library/react-native react-test-renderer
+
+npm install --save-dev @testing-library/jest-native
 ```
 
 Go to the package.json file

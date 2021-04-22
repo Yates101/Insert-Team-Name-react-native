@@ -13,9 +13,9 @@ export default function App() {
     })
   }
 
-  useEffect(() => {
-    getUser()
-  }, [])
+  // useEffect(() => {
+  //   getUser()
+  // }, [])
 
   return (
     <SafeAreaView>
