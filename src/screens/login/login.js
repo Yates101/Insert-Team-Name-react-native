@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import React, { Component, useState, useEffect } from 'react';
+import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import axios from 'axios';
 
-const LogIn = () => {
- 
+function LogInScreen({ navigation }) {
   return (
     
     <View style={styles.container}>
@@ -17,7 +16,11 @@ const LogIn = () => {
             <Button title="submit" style={styles.button}/>
           </View>
             <Text>Not a user yet?</Text>
-            <Text>Create an account!</Text>
+            <Button 
+              onPress={() => navigation.navigate('Sign Up')}
+              title="Create an account!" 
+              color='white'              
+            />
     </View>
   );
 };
@@ -58,4 +61,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {LogIn};
+export {LogInScreen};

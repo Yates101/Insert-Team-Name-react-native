@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
 import axios from 'axios';
 
-const SignUp = () => {
+const SignUpScreen = ({ navigation }) => {
 
   return(
     <View style={styles.container}>
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {SignUp};
+export {SignUpScreen};
