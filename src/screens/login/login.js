@@ -5,7 +5,8 @@ import axios from 'axios';
 
 function LogInScreen({ navigation }) {
   return (
-
+<View>
+<Headbar/>
     <View style={styles.container}>
           <TextInput style={styles.textInput}
             placeholder="email"
@@ -23,7 +24,7 @@ function LogInScreen({ navigation }) {
               color='white'              
             />
     </View>
-  );
+</View>  );
 };
 
 const styles = StyleSheet.create({

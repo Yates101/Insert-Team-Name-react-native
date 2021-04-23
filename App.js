@@ -6,6 +6,7 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } f
 import axios from 'axios';
 import { LogInScreen } from './src/screens/';
 import { SignUpScreen } from './src/screens/signup/signup';
+import { Headbar } from './src/components/headbar';
 
 const Stack = createStackNavigator();
 
@@ -26,7 +27,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen 
-          name="Home"
+          name="Log In"
           component={LogInScreen}
           options={{ title: 'Welcome' }}
         />

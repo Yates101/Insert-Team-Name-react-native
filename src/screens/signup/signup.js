@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
+import { Headbar } from '../../components/headbar'
 import axios from 'axios';
 
 const SignUpScreen = ({ navigation }) => {
 
   return(
-    <View style={styles.container}>
-      <TextInput style={styles.textInput}
-        placeholder="first name"
-      />
-      <TextInput style={styles.textInput}
-        placeholder="last name"
-      />
-      <TextInput style={styles.textInput}
-        placeholder="username"
-      />
-      <TextInput style={styles.textInput}
-        placeholder="email"
-      />
-      <TextInput style={styles.textInput}
-        placeholder="password"
-      />      
-        
-      <View style={styles.buttonContainer}>
-        <Button title="sign up" style={styles.button}/>
+    <View>
+    <Headbar/>
+      <View style={styles.container}>
+        <TextInput style={styles.textInput}
+          placeholder="first name"
+        />
+        <TextInput style={styles.textInput}
+          placeholder="last name"
+        />
+        <TextInput style={styles.textInput}
+          placeholder="username"
+        />
+        <TextInput style={styles.textInput}
+          placeholder="email"
+        />
+        <TextInput style={styles.textInput}
+          placeholder="password"
+        />      
+          
+        <View style={styles.buttonContainer}>
+          <Button title="sign up" style={styles.button}/>
+        </View>
       </View>
     </View>
   )            
