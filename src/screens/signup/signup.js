@@ -5,28 +5,55 @@ import axios from 'axios';
 
 const SignUpScreen = ({ navigation }) => {
 
+const [foreName, setForeName] = useState('')
+const [surName, setSurName] = useState('')
+const [userName, setUserName] = useState('')
+const [email, setEmail] = useState('')
+const [passWord, setPassWord] = useState('')
+
+const createUser = async() => {
+    try{
+      axios.post("https://acebook--backend.herokuapp.com/users",
+        { "forename": foreName, "surname": surName, "username": userName, "email": email, "password": passWord, "profilePic": "" })
+        navigation.navigate("Log In");
+    }
+    catch(error){
+      console.log('error', {error});
+    }
+  }
+
   return(
     <View>
     <Headbar/>
       <View style={styles.container}>
         <TextInput style={styles.textInput}
           placeholder="first name"
+          onChangeText={(text) => setForeName(text)}
+          value={foreName}
         />
         <TextInput style={styles.textInput}
           placeholder="last name"
+          onChangeText={(text) => setSurName(text)}
+          value={surName}
         />
         <TextInput style={styles.textInput}
           placeholder="username"
+          onChangeText={(text) => setUserName(text)}
+          value={userName}
         />
         <TextInput style={styles.textInput}
           placeholder="email"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
         />
         <TextInput style={styles.textInput}
           placeholder="password"
+          onChangeText={(text) => setPassWord(text)}
+          value={passWord}
         />      
           
         <View style={styles.buttonContainer}>
-          <Button title="sign up" style={styles.button}/>
+          <Button title="sign up" style={styles.button} onPress={() => {createUser();}}/>
         </View>
       </View>
     </View>

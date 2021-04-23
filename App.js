@@ -6,18 +6,11 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } f
 import axios from 'axios';
 import { LogInScreen } from './src/screens/';
 import { SignUpScreen } from './src/screens/signup/signup';
-import { Headbar } from './src/components/headbar';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   const [user, setUser] = useState([])
-
-  const getUser = async() => {
-    await axios.get("https://acebook--backend.herokuapp.com/users/1").then((res) => {
-      setUser(res.data)  
-    })
-  }
 
   // useEffect(() => {
   //   getUser()
