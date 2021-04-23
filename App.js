@@ -1,8 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } from 'react-native';
 import axios from 'axios';
-import { LogIn } from './src/screens/';
+import { LogInScreen } from './src/screens/';
+import { SignUpScreen } from './src/screens/signup/signup';
+import { Headbar } from './src/components/headbar';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   const [user, setUser] = useState([])
@@ -18,16 +24,24 @@ export default function App() {
   // }, [])
 
   return (
-    <SafeAreaView>
-      <View style={styles.header}>
-        <Text style={styles.text}>acebook</Text>
-      </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Log In"
+          component={LogInScreen}
+          options={{ title: 'Welcome' }}
+        />
+        <Stack.Screen 
+          name="Sign Up" 
+          component={SignUpScreen} 
+          options={{ title: 'Join us' }}
+          />
+      </Stack.Navigator>
 
-      <LogIn/>
-      
-    </SafeAreaView>
+    </NavigationContainer>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -35,21 +49,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-  },
-
-  header: {
-      alignSelf: 'stretch',
-      height: 52,
-      flexDirection: 'row', // row
-      backgroundColor: '#179aff',
-      alignItems: 'flex-end',
-      justifyContent: 'space-between', // center, space-around
-      paddingLeft: 10,
-      paddingRight: 10
-    },
-
-  text: {
-    fontSize: 32,
   },
 
   textInput: {

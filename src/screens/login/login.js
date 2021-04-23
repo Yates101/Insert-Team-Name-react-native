@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { Headbar } from '../../components/headbar'
 import axios from 'axios';
 
-const LogIn = () => {
- 
+function LogInScreen({ navigation }) {
   return (
-    
+<View>
+<Headbar/>
     <View style={styles.container}>
           <TextInput style={styles.textInput}
             placeholder="email"
@@ -17,9 +18,13 @@ const LogIn = () => {
             <Button title="submit" style={styles.button}/>
           </View>
             <Text>Not a user yet?</Text>
-            <Text>Create an account!</Text>
+            <Button 
+              onPress={() => navigation.navigate('Sign Up')}
+              title="Create an account!" 
+              color='white'              
+            />
     </View>
-  );
+</View>  );
 };
 
 const styles = StyleSheet.create({
@@ -58,4 +63,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {LogIn};
+export {LogInScreen};
