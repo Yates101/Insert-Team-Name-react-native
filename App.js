@@ -4,8 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } from 'react-native';
 import axios from 'axios';
-import { LogInScreen } from './src/screens/';
-import { SignUpScreen } from './src/screens/signup/signup';
+import { LogInScreen, SignUpScreen } from './src/screens/';
 
 const Stack = createStackNavigator();
 
