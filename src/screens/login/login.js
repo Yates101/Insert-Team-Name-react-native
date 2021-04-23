@@ -1,10 +1,11 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { Headbar } from '../../components/headbar'
 import axios from 'axios';
 
 function LogInScreen({ navigation }) {
   return (
-    
+
     <View style={styles.container}>
           <TextInput style={styles.textInput}
             placeholder="email"

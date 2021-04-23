@@ -38,13 +38,6 @@ export default function App() {
       </Stack.Navigator>
 
     </NavigationContainer>
-      /* <View style={styles.header}>
-        <Text style={styles.text}>acebook</Text>
-      </View>
-
-      <LogIn/>
-      
-    </SafeAreaView> */
   );
 }
 
@@ -55,21 +48,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-  },
-
-  header: {
-      alignSelf: 'stretch',
-      height: 52,
-      flexDirection: 'row', // row
-      backgroundColor: '#179aff',
-      alignItems: 'flex-end',
-      justifyContent: 'space-between', // center, space-around
-      paddingLeft: 10,
-      paddingRight: 10
-    },
-
-  text: {
-    fontSize: 32,
   },
 
   textInput: {
