@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Headbar } from '../../components/headbar'
 import axios from 'axios';
+import { PostLoader } from '../../components/postLoader';
 
 function LogInScreen({ navigation }) {
   return (
 <View>
 <Headbar/>
-    <View style={styles.container}>
+    <View>  
+      <PostLoader/>
+    </View>
+    {/* <View style={styles.container}>
           <TextInput style={styles.textInput}
             placeholder="email"
           />
@@ -23,7 +27,7 @@ function LogInScreen({ navigation }) {
               title="Create an account!" 
               color='white'              
             />
-    </View>
+    </View> */}
 </View>  );
 };
 
