@@ -3,17 +3,18 @@ import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-nat
 import { Headbar } from '../../components/headbar'
 import axios from 'axios';
 
-const createPost = () => {
+const CreatePost = ({ navigation }) => {
 
   const [newPost, setNewPost] = useState('')
 
   const createNewPost = async() => {
     try{
-      axios.post("https://acebook--backend.herokuapp.com/posts",
+      await axios.post("https://acebook--backend.herokuapp.com/posts",
       { content: newPost, user_id: 5 })
-      navigation.navigate("posts");
+      navigation.navigate("");
     }
     catch(error){
+      window.alert("Write something in contents, ya numpty!")
       console.log('error', {error})
     }
   }  
@@ -21,22 +22,26 @@ const createPost = () => {
   return(
     <View>
     <Headbar/>
-      <View>
+      <View style={styles.container}>
         <TextInput
-        style={styles.newPost}
+        style={styles.textInput}
         placeholder="What is on your mind"
         onChangeText={(text) => setNewPost(text)}
         value={newPost}
         />
-        <Button title="Create Post" style={styles.button} onPress={() => {createNewPost();}}/>
+        <View style={styles.buttonContainer}>
+          <Button title="Create Post" style={styles.button} onPress={() => {createNewPost();}}/>
+        </View>
       </View>
     </View>
   )
+};
+
   const styles = StyleSheet.create({
     container: {
       backgroundColor: '#696969',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       height: '100%',
     },
   
@@ -54,7 +59,8 @@ const createPost = () => {
       fontSize: 16,
       color: 'black',
       backgroundColor: 'white',
-      width: 200,
+      width: '80%',
+      height: 100,
     },
   
     button: {
@@ -66,7 +72,6 @@ const createPost = () => {
       backgroundColor: 'blue',
     }
   
-  });
-}
+});
 
-export { createPost };
+export { CreatePost };
