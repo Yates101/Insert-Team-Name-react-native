@@ -12,14 +12,21 @@ const [email, setEmail] = useState('')
 const [passWord, setPassWord] = useState('')
 
 const createUser = async() => {
-    try{
-      axios.post("https://acebook--backend.herokuapp.com/users",
-        { "forename": foreName, "surname": surName, "username": userName, "email": email, "password": passWord, "profilePic": "" })
-        navigation.navigate("Log In");
+  axios.post("http://localhost:3001/users",
+    { "forename": foreName, "surname": surName, "username": userName, 
+      "email": email, "password": passWord, "profilePic": "" 
+    })
+  .then(response => {
+    console.log(response)
+    if (response.data['username'] === userName) {
+      alert('Your account was created successfully')
+      navigation.navigate("Log In", { message: 'User successfully created'});
     }
-    catch(error){
-      console.log('error', {error});
-    }
+  })
+  .catch(error => {
+    alert(`${error.response.data.message}`)
+    console.log('error', {error});
+    })
   }
 
   return(
@@ -47,6 +54,7 @@ const createUser = async() => {
           value={email}
         />
         <TextInput style={styles.textInput}
+          secureTextEntry={true}
           placeholder="password"
           onChangeText={(text) => setPassWord(text)}
           value={passWord}

@@ -12,6 +12,8 @@ const Stack = createStackNavigator();
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.state = { 
       isLoggedIn: false,
       user: {},
