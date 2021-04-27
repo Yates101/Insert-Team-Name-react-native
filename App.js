@@ -10,11 +10,42 @@ import { SignUpScreen } from './src/screens/signup/signup';
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [user, setUser] = useState([])
+  // const [user, setUser] = useState({});
+  const [state, setState] = useState({
+    isLoggedIn: false,
+    user: {},
+  });
 
-  // useEffect(() => {
-  //   getUser()
-  // }, [])
+  let componentDidMount = () => {
+    this.loginStatus()
+  }
+
+  let loginStatus = () => {
+    const url = "/api/logged_in";
+    fetch(url, { credentials: 'include' })
+    .then(response => {
+      if (response.json('logged_in') === true) {
+        this.handleLogin(response)
+      } else {
+        this.handleLogout()
+      }
+    })
+    // .catch(() => this.props.history.push("/"));
+  }
+
+  let handleLogin = (data) => {
+    this.setState({
+      isLoggedIn: true,
+      user: data.user
+    })
+  }
+
+   let handleLogout = () => {
+    this.setState({
+    isLoggedIn: false,
+    user: {}
+    })
+  }
 
   return (
     <NavigationContainer>
