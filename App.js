@@ -16,12 +16,12 @@ export default function App() {
     user: {},
   });
 
-  let componentDidMount = () => {
-    this.loginStatus()
-  }
+  // let componentDidMount = () => {
+  loginStatus()
+  // }
 
-  let loginStatus = () => {
-    const url = "/api/logged_in";
+  function loginStatus() {
+    const url = "http://localhost:3001/logged_in";
     fetch(url, { credentials: 'include' })
     .then(response => {
       if (response.json('logged_in') === true) {
@@ -33,14 +33,20 @@ export default function App() {
     // .catch(() => this.props.history.push("/"));
   }
 
-  let handleLogin = (data) => {
+  // Started GET "/logged_in" for ::1 at 2021-04-27 14:45:05 +0100
+  // Processing by SessionsController#is_logged_in? as */*
+  // [active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+  // Completed 200 OK in 1ms (Views: 1.1ms | Allocations: 253
+
+
+  function handleLogin(data) {
     this.setState({
       isLoggedIn: true,
       user: data.user
     })
   }
 
-   let handleLogout = () => {
+  function handleLogout() {
     this.setState({
     isLoggedIn: false,
     user: {}
@@ -50,22 +56,21 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
-          name="Log In"
-          component={LogInScreen}
-          options={{ title: 'Welcome' }}
-        />
-        <Stack.Screen 
-          name="Sign Up" 
-          component={SignUpScreen} 
-          options={{ title: 'Join us' }}
-          />
+        <Stack.Screen name="Log In">
+          {props => <LogInScreen {...props} state={state} />}
+        </Stack.Screen>
+        <Stack.Screen name="Sign Up">
+          {props => <SignUpScreen {...props} state={state} />}
+        </Stack.Screen>
       </Stack.Navigator>
-
     </NavigationContainer>
   );
 }
 
+
+<Stack.Screen name="Home">
+  {props => <HomeScreen {...props} extraData={someData} />}
+</Stack.Screen>
 
 const styles = StyleSheet.create({
   container: {
