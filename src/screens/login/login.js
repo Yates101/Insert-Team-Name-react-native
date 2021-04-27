@@ -49,7 +49,12 @@ const createUser = async() => {
               onPress={() => navigation.navigate('Sign Up')}
               title="Create an account!" 
               color='white'              
-            />
+            />     
+            <Button 
+              onPress={() => navigation.navigate('Posts')}
+              title="Posts" 
+              color='white'              
+            />        
     </View>
 </View>  );
 };

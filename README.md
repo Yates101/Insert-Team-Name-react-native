@@ -1,3 +1,7 @@
+## General set up
+
+Run npm install
+
 ## Testing set up
 
 ```
