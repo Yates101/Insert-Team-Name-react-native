@@ -13,7 +13,7 @@ function Headbar() {
 
   return (
     <View style={styles.header}>
-      <Text style={styles.text}>acebook</Text>
+      <Text style={styles.text}>IkeBook</Text>
     </View>
   )
 }
