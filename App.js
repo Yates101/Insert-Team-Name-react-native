@@ -6,6 +6,7 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } f
 import axios from 'axios';
 import { LogInScreen } from './src/screens/';
 import { SignUpScreen } from './src/screens/signup/signup';
+import * as Cookies from 'js-cookie'
 
 const Stack = createStackNavigator();
 
