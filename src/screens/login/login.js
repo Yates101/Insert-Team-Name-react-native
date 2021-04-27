@@ -20,7 +20,7 @@ const onSubmit = () => {
       })
     .then((response) => response.json())
     .then((json) => {
-      navigation.navigate( "posts/landingpage/CHANGE", { "username": json.user.username, "logged_in": json.logged_in });
+      navigation.navigate( "Posts", { "username": json.user.username, "logged_in": json.logged_in });
       })
     .catch((error) => console.error(error));
 };
@@ -49,7 +49,11 @@ const onSubmit = () => {
             <Text>Not a user yet?</Text>
             <Button style={styles.button}
               onPress={() => navigation.navigate('Sign Up')}
-              title="Create an account!"        
+              title="Create an account!"
+            />
+            <Button style={styles.button}
+              onPress={() => navigation.navigate('Posts')}
+              title="Posts (temp)"
             />
     </View>
 </View>  );

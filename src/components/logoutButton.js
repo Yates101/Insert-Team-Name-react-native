@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Button, View, Text } from 'react-native';
 
-function logoutButton () {
+function LogoutButton () {
   return (
-    <View style={styles.logoutButton}>
+    <View>
       <Button
+        style={styles.button}
         onPress={() => onSubmit()}
-        title="Log out" style={styles.button}/>
+        title="Log out"/>
     </View>
   );
 }
@@ -18,4 +19,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export {logoutButton}
+export {LogoutButton}
