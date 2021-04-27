@@ -15,7 +15,7 @@ const createUser = async() => {
     try{
       axios.post("https://acebook--backend.herokuapp.com/users",
         { "forename": foreName, "surname": surName, "username": userName, "email": email, "password": passWord, "profilePic": "" })
-        navigation.navigate("Log In");
+        navigation.navigate("Log In"); 
     }
     catch(error){
       console.log('error', {error});
@@ -51,10 +51,11 @@ const createUser = async() => {
           onChangeText={(text) => setPassWord(text)}
           value={passWord}
         />      
-          
+  
         <View style={styles.buttonContainer}>
           <Button title="sign up" style={styles.button} onPress={() => {createUser();}}/>
         </View>
+
       </View>
     </View>
   )            

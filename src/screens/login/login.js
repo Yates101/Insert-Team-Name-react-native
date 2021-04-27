@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Headbar } from '../../components/headbar'
-import axios from 'axios';
 
 const LogInScreen = ({ navigation }) => {
 
 const [userName, setUserName] = useState('')
 const [passWord, setPassWord] = useState('')
 
-  const onSubmit = () => {
-    fetch('http://localhost:3001/login', {
+const onSubmit = () => {
+  fetch('http://localhost:3001/login', {
       method: 'POST',
       mode: 'cors',
       credentials: 'include',
@@ -21,14 +20,14 @@ const [passWord, setPassWord] = useState('')
       })
     .then((response) => response.json())
     .then((json) => {
-      navigation.navigate( "Username", { "username": json.user.username, "logged_in": json.logged_in });
+      navigation.navigate( "posts/landingpage/CHANGE", { "username": json.user.username, "logged_in": json.logged_in });
       })
     .catch((error) => console.error(error));
-  };
+};
 
   return (
-<View>
-<Headbar/>
+  <View>
+  <Headbar/>
     <View style={styles.container}>
           <TextInput style={styles.textInput}
             placeholder="username"
