@@ -10,8 +10,8 @@ const CreatePost = ({ navigation }) => {
   const createNewPost = async() => {
     try{
       await axios.post("https://acebook--backend.herokuapp.com/posts",
-      { content: newPost, user_id: 5 })
-      navigation.navigate("");
+      { content: newPost, user_id: 3 })
+      navigation.push("Username");
     }
     catch(error){
       window.alert("Write something in contents, ya numpty!")

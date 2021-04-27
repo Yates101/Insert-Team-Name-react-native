@@ -8,24 +8,23 @@ const LogInScreen = ({ navigation }) => {
 const [userName, setUserName] = useState('')
 const [passWord, setPassWord] = useState('')
 
-
-const createUser = async() => {
-  const fakeResponse = { "forename": '', "surname": ' ', "username": ' ', "email": ' ', "password": ' ', "profilePic": "" },
-
-    try{
-      const getRequest = await axios.get("https://acebook--backend.herokuapp.com/users")
-      if ( !getRequest.ok ) {
-        return fakeResponse
-      } else {
-        console.log({error})
-      }
-        // { "username": '', "password": '' })
-        navigation.navigate("Log In");
-    }
-    catch(error){
-      console.log('error', {error});
-    }
-  }
+  const onSubmit = () => {
+    fetch('http://localhost:3001/login', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify( { user: {"username": userName, "password": passWord } } )
+      })
+    .then((response) => response.json())
+    .then((json) => {
+      navigation.navigate( "Username", { "username": json.user.username, "logged_in": json.logged_in });
+      })
+    .catch((error) => console.error(error));
+  };
 
   return (
 <View>
@@ -33,28 +32,26 @@ const createUser = async() => {
     <View style={styles.container}>
           <TextInput style={styles.textInput}
             placeholder="username"
+            type="text"
             onChangeText={(text) => setUserName(text)}
             value={userName}
           />
           <TextInput style={styles.textInput}
             placeholder="password"
+            type="password"
             onChangeText={(text) => setPassWord(text)}
             value={passWord}
           />
           <View style={styles.buttonContainer}>
-            <Button title="submit" style={styles.button}/>
+            <Button
+            onPress={() => onSubmit()}
+            title="Log in" style={styles.button}/>
           </View>
             <Text>Not a user yet?</Text>
-            <Button 
+            <Button style={styles.button}
               onPress={() => navigation.navigate('Sign Up')}
-              title="Create an account!" 
-              color='white'              
-            />     
-            <Button 
-              onPress={() => navigation.navigate('Posts')}
-              title="Posts" 
-              color='white'              
-            />        
+              title="Create an account!"        
+            />
     </View>
 </View>  );
 };
@@ -85,7 +82,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    color: 'white',
+    color: 'black',
     width: 100,
   },
 
@@ -95,4 +92,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {LogInScreen};
+export { LogInScreen };

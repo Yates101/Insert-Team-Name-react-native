@@ -13,9 +13,9 @@ const [passWord, setPassWord] = useState('')
 
 const createUser = async() => {
     try{
-      axios.post("https://acebook--backend.herokuapp.com/users",
+      axios.post("http://localhost:3001/users",
         { "forename": foreName, "surname": surName, "username": userName, "email": email, "password": passWord, "profilePic": "" })
-        navigation.navigate("");
+        navigation.navigate("Username");
     }
     catch(error){
       console.log('error', {error});
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {SignUpScreen};
+export { SignUpScreen };

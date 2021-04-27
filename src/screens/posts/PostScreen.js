@@ -25,6 +25,7 @@ const PostsScreen = ({ route, navigation }) => {
   return (
     <View>
       <Headbar/>
+      <Button title='Create Post' onPress={() => navigation.navigate("Create Post")} />
       <View style={styles.container}>
         <PostList posts={posts}/>
       </View>
