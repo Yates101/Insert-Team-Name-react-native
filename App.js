@@ -9,18 +9,22 @@ import { SignUpScreen } from './src/screens/signup/signup';
 
 const Stack = createStackNavigator();
 
-export default function App() {
-  // const [user, setUser] = useState({});
-  const [state, setState] = useState({
-    isLoggedIn: false,
-    user: {},
-  });
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      isLoggedIn: false,
+      user: {},
+     };
+  }
 
-  // let componentDidMount = () => {
-  loginStatus()
-  // }
+  componentDidMount() {
+    this.loginStatus()
+    console.log(this.state.isLoggedIn)
+    console.log(this.state.user)
+  }
 
-  function loginStatus() {
+  loginStatus() {
     const url = "http://localhost:3001/logged_in";
     fetch(url, { credentials: 'include' })
     .then(response => {
@@ -33,44 +37,37 @@ export default function App() {
     // .catch(() => this.props.history.push("/"));
   }
 
-  // Started GET "/logged_in" for ::1 at 2021-04-27 14:45:05 +0100
-  // Processing by SessionsController#is_logged_in? as */*
-  // [active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
-  // Completed 200 OK in 1ms (Views: 1.1ms | Allocations: 253
-
-
-  function handleLogin(data) {
+  handleLogin(data) {
     this.setState({
       isLoggedIn: true,
       user: data.user
     })
   }
 
-  function handleLogout() {
+  handleLogout() {
     this.setState({
     isLoggedIn: false,
     user: {}
     })
   }
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Log In">
-          {props => <LogInScreen {...props} state={state} />}
-        </Stack.Screen>
-        <Stack.Screen name="Sign Up">
-          {props => <SignUpScreen {...props} state={state} />}
-        </Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  render() {
+    return (
+      <>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Log In">
+            {props => <LogInScreen {...props} user={this.state.user} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>}
+          </Stack.Screen>
+          <Stack.Screen name="Sign Up">
+            {props => <SignUpScreen {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>}
+          </Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+      </>
+    );
+  }
 }
-
-
-<Stack.Screen name="Home">
-  {props => <HomeScreen {...props} extraData={someData} />}
-</Stack.Screen>
 
 const styles = StyleSheet.create({
   container: {
@@ -107,3 +104,4 @@ const styles = StyleSheet.create({
   }
 
 });
+export default App;

@@ -3,26 +3,67 @@ import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-nativ
 import { Headbar } from '../../components/headbar'
 import axios from 'axios';
 
-function LogInScreen({ navigation }) {
+const LogInScreen = (props, { navigation }) => {
+
+console.log(props)
+
+const [userName, setUserName] = useState('')
+const [passWord, setPassWord] = useState('')
+
+const [isLoggedIn, setIsLoggedIn] = useState(false)
+const [user, setUser] = useState({})
+
+// const [isLoggedIn, setIsLoggedIn] = useState(props.loggedInStatus)
+// const [user, setUser] = useState(props.user)
+
+  const onSubmit = () => {
+    fetch('http://localhost:3001/login', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify( { user: {"username": userName, "password": passWord } } )
+      })
+    .then((response) => response.json())
+    .then((json) => {
+      setUser(json.user)
+      setIsLoggedIn(json.logged_in)
+      // navigation.navigate( "Sign Up" );
+      })
+    .catch((error) => console.error(error));
+    console.log(user)
+    console.log(isLoggedIn)
+  };
+
   return (
 <View>
 <Headbar/>
     <View style={styles.container}>
-          <TextInput style={styles.textInput}
-            placeholder="email"
-          />
-          <TextInput style={styles.textInput}
-            placeholder="password"
-          />
-          <View style={styles.buttonContainer}>
-            <Button title="submit" style={styles.button}/>
-          </View>
-            <Text>Not a user yet?</Text>
-            <Button 
-              onPress={() => navigation.navigate('Sign Up')}
-              title="Create an account!" 
-              color='white'              
-            />
+    <TextInput style={styles.textInput}
+      placeholder="username"
+      type="text"
+      onChangeText={(text) => setUserName(text)}
+      value={userName}
+    />
+    <TextInput style={styles.textInput}
+      placeholder="password"
+      type="password"
+      onChangeText={(text) => setPassWord(text)}
+      value={passWord}
+    />
+    <View style={styles.buttonContainer}>
+      <Button
+      onPress={() => onSubmit()}
+      title="Log in" style={styles.button}/>
+    </View>
+      <Text>Not a user yet?</Text>
+      <Button style={styles.button}
+        onPress={() => navigation.navigate('Sign Up')}
+        title="Create an account!"        
+      />
     </View>
 </View>  );
 };
@@ -53,7 +94,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    color: 'white',
+    color: 'black',
     width: 100,
   },
 
@@ -63,4 +104,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {LogInScreen};
+export { LogInScreen };
