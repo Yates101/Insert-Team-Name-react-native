@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {Text, StyleSheet, View, Image} from 'react-native'
+import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native'
 import axios from 'axios';
-import { withTiming } from 'react-native-reanimated';
 import { IkeButton, CommentButton } from '../components/PostButtons';
 
 
@@ -19,6 +18,8 @@ const Post = ({ user_id: id, content: body }) => {
    getPostUser()
   }, [])
 
+  const [liked, setLiked] = useState(false)
+
   return (
   <View style={styles.post}>
     <Text>{postUser}</Text>
@@ -30,7 +31,9 @@ const Post = ({ user_id: id, content: body }) => {
         <Text style={styles.postBody}>{body}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <IkeButton width={17} height={19} margin={5}/>
+          <TouchableOpacity onPress={() => setLiked((previous) => !previous)}>
+            <IkeButton width={17} height={19} margin={5} color={liked ? 'yellow' : "#009fe3"} />
+          </TouchableOpacity>
         <CommentButton width={17} heigth={21} margin={5}/>
       </View>
   </View>

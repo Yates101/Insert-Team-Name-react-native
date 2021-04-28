@@ -24,7 +24,9 @@ const [passWord, setPassWord] = useState('')
       props.handleLogin(json)
       props.navigation.navigate('Posts');
       })
+      .then(alert(`Welcome back ${userName} !`))
     .catch((error) => console.error(error));
+
   };
 
   return (

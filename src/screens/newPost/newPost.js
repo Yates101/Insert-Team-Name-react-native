@@ -7,13 +7,11 @@ const CreatePost = (props, { navigation }) => {
 
   const [newPost, setNewPost] = useState('')
 
-  console.log(props)
-
   const createNewPost = async() => {
     try{
       await axios.post("https://acebook--backend.herokuapp.com/posts",
-      { content: newPost, user_id: 1 })
-      navigation.push("Username");
+      { content: newPost, user_id: props.user.id})
+      props.navigation.push("Posts");
     }
     catch(error){
       window.alert("Write something in contents, ya numpty!")

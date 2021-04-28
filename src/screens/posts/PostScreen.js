@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const PostList = (props, ) => {
   const {posts = []} = props
-  return posts.map((post)=> <Post key={post.id} {...post}/>)
+  return posts.reverse().map((post)=> <Post key={post.id} {...post}/>)
 }
 
 const PostsScreen = (props, { route }) => {
