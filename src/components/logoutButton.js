@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, View, Text } from 'react-native';
+import { StyleSheet, Button, View, Text, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LogInScreen } from '../screens/';
 
@@ -17,7 +17,10 @@ function LogoutButton() {
       }
       })
     // .then((response) => response.json())
-    .then(() => {
+    .then((response) => {
+      if (response.status === 200){
+        alert('Logged out');
+      }
       navigation.navigate(screenName);
       })
     .catch((error) => console.error(error));
@@ -40,6 +43,8 @@ function LogoutButton() {
 //     </View>
 //   );
 // }
+
+
 
 const styles = StyleSheet.create({
   button: {
