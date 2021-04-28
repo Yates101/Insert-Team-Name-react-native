@@ -27,7 +27,7 @@ const PostsScreen = ({ route, navigation }) => {
   return (
     <View>
       <Headbar/>
-      <LogoutButton navigation={props.navigation}/>
+      <LogoutButton />
       <View style={styles.container}>
         <PostList posts={posts}/>
       </View>

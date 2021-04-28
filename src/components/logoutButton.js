@@ -3,9 +3,10 @@ import { StyleSheet, Button, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LogInScreen } from '../screens/';
 
-function LogoutButton({ LogInScreen }) {
-  function destroySession() {
-    const navigation = useNavigation();
+function LogoutButton() {
+  const navigation = useNavigation();
+
+  function destroySession(screenName) {
 
     fetch('http://localhost:3001/logout', {
       method: 'POST',
@@ -17,17 +18,15 @@ function LogoutButton({ LogInScreen }) {
       })
     // .then((response) => response.json())
     .then(() => {
-      navigation.navigate(LogInScreen);
+      navigation.navigate(screenName);
       })
     .catch((error) => console.error(error));
   };
   return (
-    <View>
       <Button
         style={styles.button}
-        onPress={() => destroySession()}
+        onPress={() => destroySession("Log In")}
         title="Log out"/>
-    </View>
   );
 }
 
