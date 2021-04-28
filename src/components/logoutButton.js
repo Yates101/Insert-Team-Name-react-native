@@ -2,7 +2,10 @@ import React from 'react';
 import { StyleSheet, Button, View, Text, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LogInScreen } from '../screens/';
-
+// const navigation = useNavigation has to be inside LogoutButton, not destroySession
+// screenName passed in to destroySession function because it's called in the Button onPress
+// the screenName has to be the name of the screen as a string and not as a variable (e.g. "Log In" as opposed to LogInScreen)
+//  Hooks can only be called inside of the body of a function component.
 function LogoutButton() {
   const navigation = useNavigation();
 
@@ -16,7 +19,6 @@ function LogoutButton() {
         'Content-Type': 'application/json',
       }
       })
-    // .then((response) => response.json())
     .then((response) => {
       if (response.status === 200){
         alert('Logged out');
@@ -32,19 +34,6 @@ function LogoutButton() {
         title="Log out"/>
   );
 }
-
-// function LogoutButton () {
-//   return (
-//     <View>
-//       <Button
-//         style={styles.button}
-//         onPress={() => destroySession()}
-//         title="Log out"/>
-//     </View>
-//   );
-// }
-
-
 
 const styles = StyleSheet.create({
   button: {
