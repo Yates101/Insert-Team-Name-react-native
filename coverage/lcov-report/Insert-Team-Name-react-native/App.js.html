@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -131,25 +131,9 @@
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -160,10 +144,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,6 +170,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,36 +201,48 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { StatusBar } from 'expo-status-bar';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } from 'react-native';
 import axios from 'axios';
-import { LogIn } from './src/screens/';
+import { LogInScreen } from './src/screens/';
+import { SignUpScreen } from './src/screens/signup/signup';
+import { PostLoader } from './src/components/postLoader';
+&nbsp;
+const Stack = createStackNavigator();
 &nbsp;
 export default function App() {
   const [user, setUser] = useState([])
-&nbsp;
-  const getUser = <span class="fstat-no" title="function not covered" >as</span>ync() =&gt; {
-<span class="cstat-no" title="statement not covered" >    await axios.get("https://acebook--backend.herokuapp.com/users/1").then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      setUser(res.data)  </span>
-    })
-  }
 &nbsp;
   // useEffect(() =&gt; {
   //   getUser()
   // }, [])
 &nbsp;
   return (
-    &lt;SafeAreaView&gt;
-      &lt;View style={styles.header}&gt;
-        &lt;Text style={styles.text}&gt;acebook&lt;/Text&gt;
-      &lt;/View&gt;
+    &lt;NavigationContainer&gt;
+      &lt;Stack.Navigator&gt;
+        &lt;Stack.Screen 
+          name="Log In"
+          component={LogInScreen}
+          options={{ title: 'Welcome' }}
+        /&gt;
+        &lt;Stack.Screen 
+          name="Sign Up" 
+          component={SignUpScreen} 
+          options={{ title: 'Join us' }}
+          /&gt;
+      &lt;/Stack.Navigator&gt;
 &nbsp;
-      &lt;LogIn/&gt;
-      
-    &lt;/SafeAreaView&gt;
+    &lt;/NavigationContainer&gt;
   );
 }
+&nbsp;
 &nbsp;
 const styles = StyleSheet.create({
   container: {
@@ -256,21 +250,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-  },
-&nbsp;
-  header: {
-      alignSelf: 'stretch',
-      height: 52,
-      flexDirection: 'row', // row
-      backgroundColor: '#179aff',
-      alignItems: 'flex-end',
-      justifyContent: 'space-between', // center, space-around
-      paddingLeft: 10,
-      paddingRight: 10
-    },
-&nbsp;
-  text: {
-    fontSize: 32,
   },
 &nbsp;
   textInput: {
@@ -307,7 +286,7 @@ const styles = StyleSheet.create({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Apr 22 2021 16:44:55 GMT+0100 (British Summer Time)
+                at Mon Apr 26 2021 15:10:26 GMT+0100 (British Summer Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

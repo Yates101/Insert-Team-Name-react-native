@@ -2,9 +2,18 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 function Headbar() {
+
+  // const [loaded] = useFonts({
+  //   Noto: require('../../assets/fonts/NotoSans-Bold.ttf'),
+  // });
+
+  // if (!loaded) {
+  //   return null;
+  // }
+
   return (
     <View style={styles.header}>
-      <Text style={styles.text}>acebook</Text>
+      <Text style={styles.text}>IkeBook</Text>
     </View>
   )
 }
@@ -23,6 +32,8 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 32,
+    fontWeight: 'bold',
+    color: '#FFED00'
   },
 })
 

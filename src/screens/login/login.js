@@ -3,25 +3,54 @@ import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-nativ
 import { Headbar } from '../../components/headbar'
 import axios from 'axios';
 
-function LogInScreen({ navigation }) {
+const LogInScreen = ({ navigation }) => {
+
+const [userName, setUserName] = useState('')
+const [passWord, setPassWord] = useState('')
+
+  const onSubmit = () => {
+    fetch('http://localhost:3001/login', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify( { user: {"username": userName, "password": passWord } } )
+      })
+    .then((response) => response.json())
+    .then((json) => {
+      navigation.navigate( "Username", { "username": json.user.username, "logged_in": json.logged_in });
+      })
+    .catch((error) => console.error(error));
+  };
+
   return (
 <View>
 <Headbar/>
     <View style={styles.container}>
           <TextInput style={styles.textInput}
-            placeholder="email"
+            placeholder="username"
+            type="text"
+            onChangeText={(text) => setUserName(text)}
+            value={userName}
           />
           <TextInput style={styles.textInput}
             placeholder="password"
+            type="password"
+            onChangeText={(text) => setPassWord(text)}
+            value={passWord}
           />
           <View style={styles.buttonContainer}>
-            <Button title="submit" style={styles.button}/>
+            <Button
+            onPress={() => onSubmit()}
+            title="Log in" style={styles.button}/>
           </View>
             <Text>Not a user yet?</Text>
-            <Button 
+            <Button style={styles.button}
               onPress={() => navigation.navigate('Sign Up')}
-              title="Create an account!" 
-              color='white'              
+              title="Create an account!"        
             />
     </View>
 </View>  );
@@ -29,7 +58,7 @@ function LogInScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#696969',
+    backgroundColor: '#cdd7d6',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
@@ -53,7 +82,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    color: 'white',
+    color: 'black',
     width: 100,
   },
 
@@ -63,4 +92,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {LogInScreen};
+export { LogInScreen };

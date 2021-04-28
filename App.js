@@ -3,18 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput, Button } from 'react-native';
-import axios from 'axios';
-import { LogInScreen } from './src/screens/';
-import { SignUpScreen } from './src/screens/signup/signup';
+import { LogInScreen, SignUpScreen, CreatePost, PostsScreen } from './src/screens/';
 
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [user, setUser] = useState([])
-
-  // useEffect(() => {
-  //   getUser()
-  // }, [])
 
   return (
     <NavigationContainer>
@@ -28,6 +21,16 @@ export default function App() {
           name="Sign Up" 
           component={SignUpScreen} 
           options={{ title: 'Join us' }}
+          />
+        <Stack.Screen
+          name="Create Post"
+          component={CreatePost}
+          option={{ title: 'Create Post' }}
+          />
+        <Stack.Screen
+          name="Username"
+          component={PostsScreen}
+          options={{ title: 'posts' }}
           />
       </Stack.Navigator>
 
