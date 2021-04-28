@@ -3,9 +3,11 @@ import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-nat
 import { Headbar } from '../../components/headbar'
 import axios from 'axios';
 
-const CreatePost = ({ navigation }) => {
+const CreatePost = (props, { navigation }) => {
 
   const [newPost, setNewPost] = useState('')
+
+  console.log(props)
 
   const createNewPost = async() => {
     try{

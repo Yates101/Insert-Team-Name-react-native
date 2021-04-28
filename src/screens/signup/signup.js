@@ -12,14 +12,21 @@ const [email, setEmail] = useState('')
 const [passWord, setPassWord] = useState('')
 
 const createUser = async() => {
-    try{
-      axios.post("http://localhost:3001/users",
-        { "forename": foreName, "surname": surName, "username": userName, "email": email, "password": passWord, "profilePic": "" })
-        navigation.navigate("Log In");
+  axios.post("http://localhost:3001/users",
+    { "forename": foreName, "surname": surName, "username": userName, 
+      "email": email, "password": passWord, "profilePic": "" 
+    })
+  .then(response => {
+    console.log(response)
+    if (response.data['username'] === userName) {
+      alert('Your account was created successfully')
+      navigation.navigate("Log In", { message: 'User successfully created'});
     }
-    catch(error){
-      console.log('error', {error});
-    }
+  })
+  .catch(error => {
+    alert(`${error.response.data.message}`)
+    console.log('error', {error});
+    })
   }
 
   return(
@@ -27,26 +34,32 @@ const createUser = async() => {
     <Headbar/>
       <View style={styles.container}>
         <TextInput style={styles.textInput}
+          autoCapitalize='none'
           placeholder="first name"
           onChangeText={(text) => setForeName(text)}
           value={foreName}
         />
         <TextInput style={styles.textInput}
+          autoCapitalize='none'
           placeholder="last name"
           onChangeText={(text) => setSurName(text)}
           value={surName}
         />
         <TextInput style={styles.textInput}
+          autoCapitalize='none'
           placeholder="username"
           onChangeText={(text) => setUserName(text)}
           value={userName}
         />
         <TextInput style={styles.textInput}
+          autoCapitalize='none'
           placeholder="email"
           onChangeText={(text) => setEmail(text)}
           value={email}
         />
         <TextInput style={styles.textInput}
+          autoCapitalize='none'
+          secureTextEntry={true}
           placeholder="password"
           onChangeText={(text) => setPassWord(text)}
           value={passWord}
@@ -58,8 +71,9 @@ const createUser = async() => {
 
       </View>
     </View>
-  )            
+  )
 };
+
 
 const styles = StyleSheet.create({
   container: {
