@@ -1,1 +1,1 @@
-export * from './PostScreen'
+export * from './PostScreen';

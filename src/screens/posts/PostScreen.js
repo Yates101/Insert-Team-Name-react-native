@@ -28,12 +28,11 @@ const PostsScreen = (props, { route }) => {
   return (
     <View>
       <Headbar/>
-     
       <ScrollView>
         <View style={styles.container}>
           <PostList posts={posts}/>
         </View>
-      </ScrollView>      
+      </ScrollView>   
       <View style={styles.createPostButton}>
         <Button 
           style={styles.createPostButton} 

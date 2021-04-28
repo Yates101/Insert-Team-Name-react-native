@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {Text, StyleSheet, View, Image} from 'react-native'
 import axios from 'axios';
 import { withTiming } from 'react-native-reanimated';
+import { IkeButton, CommentButton } from '../components/PostButtons';
+
 
 const Post = ({ user_id: id, content: body }) => {
 
@@ -28,14 +30,8 @@ const Post = ({ user_id: id, content: body }) => {
         <Text style={styles.postBody}>{body}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Image
-          style={styles.ikeButton}
-          source={require('../../assets/IkeButton.png')}
-        />
-        <Image
-          style={styles.commentButton}
-          source={require('../../assets/comment.png')}
-        />
+        <IkeButton width={17} height={19} margin={5}/>
+        <CommentButton width={17} heigth={21} margin={5}/>
       </View>
   </View>
   )
@@ -69,20 +65,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  ikeButton: {
-    height: 13,
-    width: 15,
-    margin: 5
-  },
-  commentButton: {
-    height: 13,
-    width: 17,
-    margin: 5
-  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    paddingRight: 5
+    paddingRight: 5,
+    margin: 5
   }
 });
 
