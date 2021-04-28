@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Button, ScrollView } from 'react-native';
 import { Headbar, Post } from '../../components/index';
 import axios from 'axios';
-import { useFonts } from 'expo-font';
 
 const PostList = (props) => {
   const {posts = []} = props
@@ -26,12 +25,11 @@ const PostsScreen = ({ route, navigation }) => {
   return (
     <View>
       <Headbar/>
-     
       <ScrollView>
         <View style={styles.container}>
           <PostList posts={posts}/>
         </View>
-      </ScrollView>      
+      </ScrollView>   
       <View style={styles.createPostButton}>
         <Button 
           style={styles.createPostButton} 

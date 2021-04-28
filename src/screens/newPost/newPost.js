@@ -10,7 +10,7 @@ const CreatePost = ({ navigation }) => {
   const createNewPost = async() => {
     try{
       await axios.post("https://acebook--backend.herokuapp.com/posts",
-      { content: newPost, user_id: 3 })
+      { content: newPost, user_id: 1 })
       navigation.push("Username");
     }
     catch(error){
