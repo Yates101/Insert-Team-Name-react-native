@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-## General set up
-
-Run npm install
-=======
 ## Log out plans
 
 - button on every screen (i.e make log out component and import on every screen/ or can this be through app?
@@ -16,7 +11,6 @@ Run npm install
 - delete/change the react native logged in state/session (stored how?! Stu?!)
 - and then navigate to log in screen
 - and flash/alert/text that you are safely logged out
->>>>>>> origin/logout
 
 ## Testing set up
 

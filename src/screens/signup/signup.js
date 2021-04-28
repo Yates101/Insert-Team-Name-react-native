@@ -15,11 +15,7 @@ const createUser = async() => {
     try{
       axios.post("http://localhost:3001/users",
         { "forename": foreName, "surname": surName, "username": userName, "email": email, "password": passWord, "profilePic": "" })
-<<<<<<< HEAD
-        navigation.navigate("Username");
-=======
-        navigation.navigate("Log In"); 
->>>>>>> origin/logout
+        navigation.navigate("Log In");
     }
     catch(error){
       console.log('error', {error});
