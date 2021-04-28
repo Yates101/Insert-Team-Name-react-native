@@ -19,7 +19,7 @@ const Post = ({ user_id: id, content: body }) => {
   }, [])
 
   const [liked, setLiked] = useState(false)
-
+  
   return (
   <View style={styles.post}>
     <Text>{postUser}</Text>

@@ -21,8 +21,12 @@ const [passWord, setPassWord] = useState('')
       })
     .then((response) => response.json())
     .then((json) => {
-      props.handleLogin(json)
-      props.navigation.navigate('Posts');
+      if (json.logged_in === true) {
+        props.handleLogin(json)
+        props.navigation.navigate('Posts');
+      } else if(json.status === 403) {
+        alert(json.message)
+      }
       })
       .then(alert(`Welcome back ${userName} !`))
     .catch((error) => console.error(error));

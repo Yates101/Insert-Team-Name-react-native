@@ -10,6 +10,7 @@ const PostList = (props, ) => {
   return posts.reverse().map((post)=> <Post key={post.id} {...post}/>)
 }
 
+
 const PostsScreen = (props, { route }) => {
   const navigation = useNavigation();
   
