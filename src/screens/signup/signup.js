@@ -15,7 +15,11 @@ const createUser = async() => {
     try{
       axios.post("http://localhost:3001/users",
         { "forename": foreName, "surname": surName, "username": userName, "email": email, "password": passWord, "profilePic": "" })
+<<<<<<< HEAD
         navigation.navigate("Username");
+=======
+        navigation.navigate("Log In"); 
+>>>>>>> origin/logout
     }
     catch(error){
       console.log('error', {error});
@@ -51,10 +55,11 @@ const createUser = async() => {
           onChangeText={(text) => setPassWord(text)}
           value={passWord}
         />      
-          
+  
         <View style={styles.buttonContainer}>
           <Button title="sign up" style={styles.button} onPress={() => {createUser();}}/>
         </View>
+
       </View>
     </View>
   )            

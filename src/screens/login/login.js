@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Headbar } from '../../components/headbar'
-import axios from 'axios';
 
 const LogInScreen = ({ navigation }) => {
 
 const [userName, setUserName] = useState('')
 const [passWord, setPassWord] = useState('')
 
+<<<<<<< HEAD
   const onSubmit = () => {
     fetch('http://localhost:3001/login', {
+=======
+const onSubmit = () => {
+  fetch('http://localhost:3001/login', {
+>>>>>>> origin/logout
       method: 'POST',
       mode: 'cors',
       credentials: 'include',
@@ -21,14 +25,21 @@ const [passWord, setPassWord] = useState('')
       })
     .then((response) => response.json())
     .then((json) => {
+<<<<<<< HEAD
       navigation.navigate( "Username", { "username": json.user.username, "logged_in": json.logged_in });
       })
     .catch((error) => console.error(error));
   };
+=======
+      navigation.navigate( "Posts", { "username": json.user.username, "logged_in": json.logged_in });
+      })
+    .catch((error) => console.error(error));
+};
+>>>>>>> origin/logout
 
   return (
-<View>
-<Headbar/>
+  <View>
+  <Headbar/>
     <View style={styles.container}>
           <TextInput style={styles.textInput}
             placeholder="username"
@@ -50,7 +61,15 @@ const [passWord, setPassWord] = useState('')
             <Text>Not a user yet?</Text>
             <Button style={styles.button}
               onPress={() => navigation.navigate('Sign Up')}
+<<<<<<< HEAD
               title="Create an account!"        
+=======
+              title="Create an account!"
+            />
+            <Button style={styles.button}
+              onPress={() => navigation.navigate('Posts')}
+              title="Posts (temp)"
+>>>>>>> origin/logout
             />
     </View>
 </View>  );
