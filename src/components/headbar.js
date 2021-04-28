@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { LogoutButton } from './logoutButton';
 
 function Headbar() {
 
@@ -14,6 +15,7 @@ function Headbar() {
   return (
     <View style={styles.header}>
       <Text style={styles.text}>IkeBook</Text>
+      <LogoutButton />
     </View>
   )
 }
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: '#FFED00'
-  },
+  }
 })
 
 export {Headbar};
