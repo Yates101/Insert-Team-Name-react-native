@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Headbar } from '../../components/headbar'
 
-const LogInScreen = ({ navigation }) => {
+
+const LogInScreen = (props, { navigation, route }) => {
 
 const [userName, setUserName] = useState('')
 const [passWord, setPassWord] = useState('')
@@ -20,40 +21,45 @@ const [passWord, setPassWord] = useState('')
       })
     .then((response) => response.json())
     .then((json) => {
-      navigation.navigate( "Username", { "username": json.user.username, "logged_in": json.logged_in });
+      props.handleLogin(json)
+      props.navigation.navigate('Posts');
       })
     .catch((error) => console.error(error));
   };
 
   return (
-  <View>
-  <Headbar/>
-    <View style={styles.container}>
-          <TextInput style={styles.textInput}
-            placeholder="username"
-            type="text"
-            onChangeText={(text) => setUserName(text)}
-            value={userName}
-          />
-          <TextInput style={styles.textInput}
-            placeholder="password"
-            type="password"
-            onChangeText={(text) => setPassWord(text)}
-            value={passWord}
-          />
-          <View style={styles.buttonContainer}>
-            <Button
-            onPress={() => onSubmit()}
-            title="Log in" style={styles.button}/>
-          </View>
-            <Text>Not a user yet?</Text>
-            <Button style={styles.button}
-              onPress={() => navigation.navigate('Sign Up')}
-              title="Create an account!"        
-            />
-    </View>
-</View>  );
-};
+    <View>
+      <Headbar/>
+      <View style={styles.container}>
+      <TextInput style={styles.textInput}
+        autoCapitalize='none'
+        placeholder="username"
+        type="text"
+        onChangeText={(text) => setUserName(text)}
+        value={userName}
+      />
+      <TextInput style={styles.textInput}
+        autoCapitalize='none'
+        secureTextEntry={true}
+        placeholder="password"
+        onChangeText={(text) => setPassWord(text)}
+        value={passWord}
+      />
+      <View style={styles.buttonContainer}>
+        <Button
+        onPress={() => onSubmit()}
+        title="Log in" style={styles.button}/>
+      </View>
+      <Text>Not a user yet?</Text>
+      <Button style={styles.button}
+        onPress={() => props.navigation.navigate('Sign Up')}
+        title="Create an account!"        
+        />
+      </View>
+    </View>  
+    );
+  };
+
 
 const styles = StyleSheet.create({
   container: {

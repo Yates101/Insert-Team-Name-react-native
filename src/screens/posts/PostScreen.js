@@ -3,14 +3,16 @@ import { StyleSheet, View, Button, ScrollView } from 'react-native';
 import { Headbar, Post } from '../../components/index';
 import axios from 'axios';
 import { useFonts } from 'expo-font';
+import { useNavigation } from '@react-navigation/native';
 
-const PostList = (props) => {
+const PostList = (props, ) => {
   const {posts = []} = props
   return posts.map((post)=> <Post key={post.id} {...post}/>)
 }
 
-const PostsScreen = ({ route, navigation }) => {
-
+const PostsScreen = (props, { route }) => {
+  const navigation = useNavigation();
+  
   const [posts, setPosts] = useState([])
 
   const getPosts = async() => {
