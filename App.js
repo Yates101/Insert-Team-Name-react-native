@@ -53,6 +53,7 @@ class App extends React.Component {
   render() {
     return (
       <>
+      
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Log In">

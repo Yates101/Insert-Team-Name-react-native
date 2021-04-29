@@ -2,45 +2,19 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { LogoutButton } from './logoutButton';
 import { useNavigation } from '@react-navigation/native';
+//import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 
-function Headbar({loggedInStatus}) {
+function Headbar(props) {
 
   const navigation = useNavigation();
   let logoutButton = null;
 
   // console.log(navigation.getParam('loggedInStatus'))
-  console.log(loggedInStatus);
+  console.log(props);
 
-  if (loggedInStatus === true) {
+  if (props.loggedInStatus === true) {
     logoutButton = <LogoutButton />
   }
-
-  // let logoutButton = null;
-  // let loggedIn = false
-  
-  // fetch('http://localhost:3001/login', {
-  //   method: 'POST',
-  //   mode: 'cors',
-  //   credentials: 'include',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   referrerPolicy: 'no-referrer',
-  //   body: JSON.stringify( { user: {"username": userName, "password": passWord } } )
-  //   })
-  // .then((response) => response.json())
-  // .then((json) => {
-  //   if (json.logged_in === true) {
-  //     loggedIn = true;
-  //   } else {
-  //     loggedIn = false;
-  //   }
-  //   })
-  // .catch((error) => console.error(error));
-
-  // if (loggedIn) {
-  //     logoutButton = <LogoutButton />
-  //   }
 
   return (
     <View style={styles.header}>

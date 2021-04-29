@@ -10,7 +10,7 @@ const PostList = (props) => {
   return posts.map((post)=> <Post key={post.id} {...post}/>)
 }
 
-const PostsScreen = ({ route, navigation }) => {
+const PostsScreen = (props) => {
 
   const [posts, setPosts] = useState([])
 
@@ -19,6 +19,8 @@ const PostsScreen = ({ route, navigation }) => {
       setPosts(res.data)
     })
   }
+
+  
 
   useEffect(() => {
    getPosts()

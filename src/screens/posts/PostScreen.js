@@ -5,12 +5,14 @@ import axios from 'axios';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 
-const PostList = (props, ) => {
+const PostList = (props) => {
   const {posts = []} = props
   return posts.map((post)=> <Post key={post.id} {...post}/>)
 }
 
-const PostsScreen = (props, { route }) => {
+const PostsScreen = (props) => {
+
+  console.log(props)
   const navigation = useNavigation();
   
   const [posts, setPosts] = useState([])
@@ -27,8 +29,7 @@ const PostsScreen = (props, { route }) => {
 
   return (
     <View>
-      <Headbar/>
-     
+      <Headbar {...props}/>
       <ScrollView>
         <View style={styles.container}>
           <PostList posts={posts}/>
