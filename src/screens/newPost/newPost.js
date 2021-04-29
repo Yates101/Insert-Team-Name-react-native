@@ -21,6 +21,12 @@ const CreatePost = (props, { navigation }) => {
     }
   }  
 
+   const keyPressed = (event) => {
+    if (event.key === "Enter") {
+      createNewPost();
+    }
+  } 
+
   return(
     <View>
     <Headbar {...props}/>
@@ -29,6 +35,7 @@ const CreatePost = (props, { navigation }) => {
         style={styles.textInput}
         placeholder="What is on your mind"
         onChangeText={(text) => setNewPost(text)}
+         onKeyPress={(key) => keyPressed(key)}
         value={newPost}
         />
         <View style={styles.buttonContainer}>

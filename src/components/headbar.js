@@ -7,7 +7,7 @@ function Headbar(props) {
   return (
     <View style={styles.header}>
       <Text style={styles.text}>IkeBook</Text>
-      {props.loggedInStatus ? <LogoutButton/> : null}
+      {props.loggedInStatus && <LogoutButton {...props}/>}
     </View>
   )
 }
