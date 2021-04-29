@@ -19,7 +19,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.loginStatus()
-    console.log(this.state.isLoggedIn)
+    console.log(`Logged in = ${this.state.isLoggedIn}`)
     console.log(this.state.user)
   }
 
@@ -33,7 +33,6 @@ class App extends React.Component {
         this.handleLogout()
       }
     })
-    // .catch(() => this.props.history.push("/"));
   }
 
   handleLogin(data) {
@@ -53,6 +52,7 @@ class App extends React.Component {
   render() {
     return (
       <>
+      
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Log In">

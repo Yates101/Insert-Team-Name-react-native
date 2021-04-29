@@ -27,7 +27,6 @@ const Post = ( { id: post_id, user_id: user_id, content: body, created_at: creat
   const [amountOfLikes, setAmountOfLikes] = useState(0)
 
   const getLikes = async() => {
-    console.log(post_id)
     await axios.get(`http://localhost:3001/likes/post_id/${post_id}`).then(({data}) => {
       setAmountOfLikes(data.length)
       for (let i = 0; i < data.length; i++) {
@@ -52,7 +51,6 @@ const Post = ( { id: post_id, user_id: user_id, content: body, created_at: creat
       axios.post("http://localhost:3001/likes", 
       { post_id: post_id, user_id: user })
       .then(() => {getLikes(), setLiked(true)} )
-      console.log(`likes`, amountOfLikes)
     }
   }
   

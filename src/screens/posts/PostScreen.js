@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Button, ScrollView } from 'react-native';
+import { StyleSheet, View, Button, ScrollView, SafeAreaView } from 'react-native';
 import { Headbar, Post } from '../../components/index';
 import axios from 'axios';
-import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 
 const PostList = (props) => {
   const {posts = [], user} = props
-  return posts.reverse().map((post)=> <Post key={post.id} {...post} {...{user}}/>)
+  return posts.map((post)=> <Post key={post.id} {...post} {...{user}}/>)
 }
 
 const PostsScreen = (props, { route }) => {
   const navigation = useNavigation()
-  
+
   const [posts, setPosts] = useState([])
 
   const getPosts = async() => {
@@ -27,12 +26,14 @@ const PostsScreen = (props, { route }) => {
 
   return (
     <View>
-      <Headbar/>
+      <Headbar {...props}/>
+      <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
           <PostList posts={posts} user={props.user.id}/>
         </View>
-      </ScrollView>   
+      </ScrollView>  
+      </SafeAreaView> 
       <View style={styles.createPostButton}>
         <Button 
           style={styles.createPostButton} 

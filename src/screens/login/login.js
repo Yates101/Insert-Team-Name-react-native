@@ -1,13 +1,13 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useState, useEffect } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { Platform, StyleSheet, Text, View, TextInput, Button, TouchableOpacity} from 'react-native';
 import { Headbar } from '../../components/headbar'
 
 const LogInScreen = (props, { route }) => {
   const navigation = useNavigation();
 
-const [userName, setUserName] = useState('')
-const [passWord, setPassWord] = useState('')
+  const [userName, setUserName] = useState('')
+  const [passWord, setPassWord] = useState('')
 
   const onSubmit = () => {
     fetch('http://localhost:3001/login', {
@@ -34,9 +34,15 @@ const [passWord, setPassWord] = useState('')
 
   };
 
+  const keyPressed = (event) => {
+    if (event.key === "Enter") {
+      onSubmit();
+    }
+  } 
+
   return (
     <View>
-      <Headbar/>
+      <Headbar {...props}/>
       <View style={styles.container}>
       <TextInput style={styles.textInput}
         autoCapitalize='none'
@@ -50,13 +56,12 @@ const [passWord, setPassWord] = useState('')
         secureTextEntry={true}
         placeholder="password"
         onChangeText={(text) => setPassWord(text)}
+        onKeyPress={(key) => keyPressed(key)}
         value={passWord}
       />
-      <View style={styles.buttonContainer}>
-        <Button
-        onPress={() => onSubmit()}
-        title="Log in" style={styles.button}/>
-      </View>
+      <TouchableOpacity onPress={() => onSubmit()}>
+        <Text style={styles.button}>Log In</Text>
+      </TouchableOpacity>
       <Text>Not a user yet?</Text>
       <Button style={styles.button}
         onPress={() => navigation.navigate('Sign Up')}
@@ -94,14 +99,16 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    color: 'black',
+    color: 'yellow',
     width: 100,
+    margin: 8,
+    fontSize: 24,
+    borderRadius: 3,
+    borderWidth: 1,
+    borderColor: "#009fe3",
+    backgroundColor: "#009fe3",
+    textAlign: 'center',
   },
-
-  buttonContainer: {
-    backgroundColor: 'blue',
-  }
-
 });
 
 export { LogInScreen };

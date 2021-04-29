@@ -28,6 +28,12 @@ const createUser = async() => {
     console.log('error', {error});
     })
   }
+  
+  const keyPressed = (event) => {
+    if (event.key === "Enter") {
+      createUser();
+    }
+  } 
 
   return(
     <View>
@@ -62,6 +68,7 @@ const createUser = async() => {
           secureTextEntry={true}
           placeholder="password"
           onChangeText={(text) => setPassWord(text)}
+          onKeyPress={(key) => keyPressed(key)}
           value={passWord}
         />      
   
