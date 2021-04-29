@@ -5,8 +5,8 @@ import axios from 'axios';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-const PostList = (properties) => {
-  const {posts = []} = properties
+const PostList = (props) => {
+  const {posts = []} = props
   return posts.map((post)=> <Post key={post.id} {...post}/>)
 }
 
@@ -27,7 +27,6 @@ const PostsScreen = ({ route, navigation }) => {
   return (
     <View>
       <Headbar/>
-      <LogoutButton />
       <View style={styles.container}>
         <PostList posts={posts}/>
       </View>
