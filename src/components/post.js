@@ -22,6 +22,28 @@ const Post = ({ user_id: id, content: body, created_at: created_at }) => {
   }, [])
 
   const [liked, setLiked] = useState(false)
+  const [amountOfLikes, setAmountOfLikes] = useState(0)
+
+  const getLikes = async() => {
+    // await axios.get(' ').then((res) => {
+    //   setAmountOfLikes(res.data.likes)
+    // })
+    setAmountOfLikes(3)
+  }
+
+  useEffect(() => {
+    getLikes()
+  }, [])
+
+  const like = () => {
+    if (liked) {
+      // axios.push('', )
+      setLiked(false)
+    } else {
+      // axios.push('', )
+      setLiked(true)
+    }
+  }
   
   return (
   <View style={styles.post}>
@@ -38,9 +60,10 @@ const Post = ({ user_id: id, content: body, created_at: created_at }) => {
         <Text style={{ left: 5 }}>{timeStamp}</Text>
       </View>
         <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => setLiked((previous) => !previous)}>
+        <TouchableOpacity onPress={() => like()}>
             <IkeButton width={17} height={19} margin={5} color={liked ? 'yellow' : "#009fe3"} />
           </TouchableOpacity>
+          <Text style={styles.amountOfLikes}>{amountOfLikes}</Text>
           <CommentButton width={17} heigth={21} margin={5}/>
         </View>
       </View>
@@ -84,6 +107,9 @@ const styles = StyleSheet.create({
     flex: 2,
     flexDirection: 'row',
     paddingLeft: 30
+  },
+  amountOfLikes: {
+    margin: 5
   }
 });
 
