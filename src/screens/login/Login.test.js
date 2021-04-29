@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 
-import {LogIn} from './login.js';
+import { LogInScreen } from './login.js';
 import renderer from 'react-test-renderer';
 
 test('it works', () => {
@@ -9,7 +9,7 @@ test('it works', () => {
 });
 
 describe("<LogIn />", () => {
-  const tree = renderer.create(<LogIn />).toJSON();
+  const tree = renderer.create(<LogInScreen />).toJSON();
 
   it('renders correctly', () => {
     expect(tree).toMatchSnapshot();

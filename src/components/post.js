@@ -5,14 +5,14 @@ import { IkeButton, CommentButton } from '../components/PostButtons';
 
 import dayjs from 'dayjs';
 
-const Post = ({ user_id: id, content: body, created_at: created_at }) => {
+const Post = ({ id: post_id, user_id: user_id, content: body, created_at: created_at }) => {
 
   const [postUser, setPostUser] = useState("")
 
   const timeStamp = dayjs(created_at).format("DD/MM")
 
   const getPostUser = async() => {
-    await axios.get(`https://acebook--backend.herokuapp.com/users/${id}`).then((res) => {
+    await axios.get(`https://acebook--backend.herokuapp.com/users/${user_id}`).then((res) => {
       setPostUser(res.data.username)
     })
   }
@@ -25,10 +25,11 @@ const Post = ({ user_id: id, content: body, created_at: created_at }) => {
   const [amountOfLikes, setAmountOfLikes] = useState(0)
 
   const getLikes = async() => {
-    // await axios.get(' ').then((res) => {
-    //   setAmountOfLikes(res.data.likes)
-    // })
-    setAmountOfLikes(3)
+  //   await axios.get(` ${post_id}`).then(({data}) => {
+  //     setAmountOfLikes(data.length)
+  //   })
+  setAmountOfLikes(3)
+
   }
 
   useEffect(() => {
@@ -37,10 +38,10 @@ const Post = ({ user_id: id, content: body, created_at: created_at }) => {
 
   const like = () => {
     if (liked) {
-      // axios.push('', )
+      // axios.push(` ${post_id} ${user_id}`)
       setLiked(false)
     } else {
-      // axios.push('', )
+      // axios.push(` ${post_id} ${user_id}`)
       setLiked(true)
     }
   }
