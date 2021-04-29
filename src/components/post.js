@@ -3,10 +3,13 @@ import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native'
 import axios from 'axios';
 import { IkeButton, CommentButton } from '../components/PostButtons';
 
+import dayjs from 'dayjs';
 
-const Post = ({ user_id: id, content: body }) => {
+const Post = ({ user_id: id, content: body, created_at: created_at }) => {
 
   const [postUser, setPostUser] = useState("")
+
+  const timeStamp = dayjs(created_at).format("DD/MM")
 
   const getPostUser = async() => {
     await axios.get(`https://acebook--backend.herokuapp.com/users/${id}`).then((res) => {
@@ -30,11 +33,16 @@ const Post = ({ user_id: id, content: body }) => {
         />
         <Text style={styles.postBody}>{body}</Text>
       </View>
-      <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => setLiked((previous) => !previous)}>
+      <View style={styles.row}>
+      <View style={styles.timeStamp}>
+        <Text style={{ left: 5 }}>{timeStamp}</Text>
+      </View>
+        <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => setLiked((previous) => !previous)}>
             <IkeButton width={17} height={19} margin={5} color={liked ? 'yellow' : "#009fe3"} />
           </TouchableOpacity>
-        <CommentButton width={17} heigth={21} margin={5}/>
+          <CommentButton width={17} heigth={21} margin={5}/>
+        </View>
       </View>
   </View>
   )
@@ -62,17 +70,20 @@ const styles = StyleSheet.create({
   },
   userImage: {
     height: 60,
-    width: 60
+    width: 60,
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    width: '100%'
+  },
+  timeStamp: {
+    flex: 4,
+    paddingLeft: 65
   },
   buttonContainer: {
+    flex: 2,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    paddingRight: 5,
-    margin: 5
+    paddingLeft: 30
   }
 });
 

@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 
-const PostList = (props, ) => {
+const PostList = (props) => {
   const {posts = []} = props
   return posts.reverse().map((post)=> <Post key={post.id} {...post}/>)
 }

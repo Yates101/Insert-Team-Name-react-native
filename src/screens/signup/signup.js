@@ -77,7 +77,7 @@ const createUser = async() => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#696969',
+    backgroundColor: '#cdd7d6',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
