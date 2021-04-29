@@ -8,14 +8,14 @@ test('it works', () => {
   expect(true).toBeTruthy();
 });
 
-describe("<LogIn />", () => {
+describe("<LogInScreen />", () => {
   const tree = renderer.create(<LogInScreen />).toJSON();
 
   it('renders correctly', () => {
     expect(tree).toMatchSnapshot();
   })
 
-  it('has 5 children', () => {
-    expect(tree.children.length).toBe(5);
+  it('has 2 children', () => {
+    expect(tree.children.length).toBe(2);
   });
 });

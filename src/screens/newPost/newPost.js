@@ -9,7 +9,7 @@ const CreatePost = (props, { navigation }) => {
 
   const createNewPost = async() => {
     try{
-      await axios.post("https://acebook--backend.herokuapp.com/posts",
+      await axios.post("http://localhost:3001/posts",
       { content: newPost, user_id: props.user.id})
       props.navigation.push("Posts");
     }
@@ -39,7 +39,7 @@ const CreatePost = (props, { navigation }) => {
 
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#696969',
+      backgroundColor: '#cdd7d6',
       alignItems: 'center',
       justifyContent: 'flex-start',
       height: '100%',

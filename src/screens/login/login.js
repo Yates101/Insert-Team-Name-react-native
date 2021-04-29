@@ -1,9 +1,10 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { useState, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Headbar } from '../../components/headbar'
 
-
-const LogInScreen = (props, { navigation, route }) => {
+const LogInScreen = (props, { route }) => {
+  const navigation = useNavigation();
 
 const [userName, setUserName] = useState('')
 const [passWord, setPassWord] = useState('')
@@ -23,12 +24,12 @@ const [passWord, setPassWord] = useState('')
     .then((json) => {
       if (json.logged_in === true) {
         props.handleLogin(json)
+        alert(`Welcome back ${userName} !`)
         props.navigation.navigate('Posts');
       } else if(json.status === 403) {
         alert(json.message)
       }
       })
-      .then(alert(`Welcome back ${userName} !`))
     .catch((error) => console.error(error));
 
   };
@@ -58,7 +59,7 @@ const [passWord, setPassWord] = useState('')
       </View>
       <Text>Not a user yet?</Text>
       <Button style={styles.button}
-        onPress={() => props.navigation.navigate('Sign Up')}
+        onPress={() => navigation.navigate('Sign Up')}
         title="Create an account!"        
         />
       </View>

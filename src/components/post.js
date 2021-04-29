@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native'
 import axios from 'axios';
 import { IkeButton, CommentButton } from '../components/PostButtons';
+import { useNavigation } from '@react-navigation/core';
 
 import dayjs from 'dayjs';
 
-const Post = ({ id: post_id, user_id: user_id, content: body, created_at: created_at }) => {
+const Post = ( { id: post_id, user_id: user_id, content: body, created_at: created_at, user}) => {
+  const navigation = useNavigation()
 
   const [postUser, setPostUser] = useState("")
 
   const timeStamp = dayjs(created_at).format("DD/MM")
 
   const getPostUser = async() => {
-    await axios.get(`https://acebook--backend.herokuapp.com/users/${user_id}`).then((res) => {
+    await axios.get(`http://localhost:3001/users/${user_id}`).then((res) => {
       setPostUser(res.data.username)
     })
   }
@@ -25,11 +27,16 @@ const Post = ({ id: post_id, user_id: user_id, content: body, created_at: create
   const [amountOfLikes, setAmountOfLikes] = useState(0)
 
   const getLikes = async() => {
-  //   await axios.get(` ${post_id}`).then(({data}) => {
-  //     setAmountOfLikes(data.length)
-  //   })
-  setAmountOfLikes(3)
-
+    console.log(post_id)
+    await axios.get(`http://localhost:3001/likes/post_id/${post_id}`).then(({data}) => {
+      setAmountOfLikes(data.length)
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].user_id === user) {
+          setLiked(true)
+          break;
+        }
+      }
+    })
   }
 
   useEffect(() => {
@@ -38,11 +45,14 @@ const Post = ({ id: post_id, user_id: user_id, content: body, created_at: create
 
   const like = () => {
     if (liked) {
-      // axios.push(` ${post_id} ${user_id}`)
-      setLiked(false)
+      axios.delete(`http://localhost:3001/likes/0?post_id=${post_id}&user_id=${user}`)
+      .then(() => {getLikes(), setLiked(false)})
+      
     } else {
-      // axios.push(` ${post_id} ${user_id}`)
-      setLiked(true)
+      axios.post("http://localhost:3001/likes", 
+      { post_id: post_id, user_id: user })
+      .then(() => {getLikes(), setLiked(true)} )
+      console.log(`likes`, amountOfLikes)
     }
   }
   

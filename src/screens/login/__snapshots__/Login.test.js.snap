@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LogIn /> renders correctly 1`] = `
+exports[`<LogInScreen /> renders correctly 1`] = `
 <View>
   <View
     style={

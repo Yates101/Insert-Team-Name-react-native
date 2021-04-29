@@ -6,18 +6,17 @@ import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 
 const PostList = (props) => {
-  const {posts = []} = props
-  return posts.reverse().map((post)=> <Post key={post.id} {...post}/>)
+  const {posts = [], user} = props
+  return posts.reverse().map((post)=> <Post key={post.id} {...post} {...{user}}/>)
 }
 
-
 const PostsScreen = (props, { route }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
   
   const [posts, setPosts] = useState([])
 
   const getPosts = async() => {
-    await axios.get("https://acebook--backend.herokuapp.com/posts").then((res) => {
+    await axios.get("http://localhost:3001/posts").then((res) => {
       setPosts(res.data)
     })
   }
@@ -31,7 +30,7 @@ const PostsScreen = (props, { route }) => {
       <Headbar/>
       <ScrollView>
         <View style={styles.container}>
-          <PostList posts={posts}/>
+          <PostList posts={posts} user={props.user.id}/>
         </View>
       </ScrollView>   
       <View style={styles.createPostButton}>

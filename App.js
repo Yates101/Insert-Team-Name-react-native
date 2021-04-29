@@ -65,7 +65,7 @@ class App extends React.Component {
             {props => <CreatePost {...props} user={this.state.user} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>}
           </Stack.Screen>
           <Stack.Screen name="Posts">
-            {props => <PostsScreen handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>}
+            {props => <PostsScreen {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn} user={this.state.user}/>}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
