@@ -1,19 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { LogoutButton } from './logoutButton';
 
-function Headbar() {
-
-  // const [loaded] = useFonts({
-  //   Noto: require('../../assets/fonts/NotoSans-Bold.ttf'),
-  // });
-
-  // if (!loaded) {
-  //   return null;
-  // }
+function Headbar(props) {
 
   return (
     <View style={styles.header}>
       <Text style={styles.text}>IkeBook</Text>
+      {props.loggedInStatus && <LogoutButton {...props}/>}
     </View>
   )
 }
@@ -34,7 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: '#FFED00'
-  },
+  }
 })
 
 export {Headbar};

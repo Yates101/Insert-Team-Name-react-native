@@ -5,8 +5,8 @@ import { Headbar } from '../../components/headbar'
 
 const LogInScreen = (props, { navigation, route }) => {
 
-const [userName, setUserName] = useState('')
-const [passWord, setPassWord] = useState('')
+  const [userName, setUserName] = useState('')
+  const [passWord, setPassWord] = useState('')
 
   const onSubmit = () => {
     fetch('http://localhost:3001/login', {
@@ -31,9 +31,15 @@ const [passWord, setPassWord] = useState('')
     .catch((error) => console.error(error));
   };
 
+  const keyPressed = (event) => {
+    if (event.key === "Enter") {
+      onSubmit();
+    }
+  } 
+
   return (
     <View>
-      <Headbar/>
+      <Headbar {...props}/>
       <View style={styles.container}>
       <TextInput style={styles.textInput}
         autoCapitalize='none'
@@ -47,6 +53,7 @@ const [passWord, setPassWord] = useState('')
         secureTextEntry={true}
         placeholder="password"
         onChangeText={(text) => setPassWord(text)}
+        onKeyPress={(key) => keyPressed(key)}
         value={passWord}
       />
       <View style={styles.buttonContainer}>

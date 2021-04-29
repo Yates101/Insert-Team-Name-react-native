@@ -6,7 +6,7 @@ import { LogInScreen } from '../screens/';
 // screenName passed in to destroySession function because it's called in the Button onPress
 // the screenName has to be the name of the screen as a string and not as a variable (e.g. "Log In" as opposed to LogInScreen)
 //  Hooks can only be called inside of the body of a function component.
-function LogoutButton() {
+function LogoutButton(props) {
   const navigation = useNavigation();
 
   function destroySession(screenName) {
@@ -22,11 +22,16 @@ function LogoutButton() {
     .then((response) => {
       if (response.status === 200){
         alert('Logged out');
+        props.handleLogout();
+        navigation.navigate(screenName);
+      } else {
+        alert('Log out unsuccessful, please try again')
       }
-      navigation.navigate(screenName);
       })
     .catch((error) => console.error(error));
   };
+
+
   return (
       <Button
         style={styles.button}
