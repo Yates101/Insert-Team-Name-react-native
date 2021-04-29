@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Button, ScrollView } from 'react-native';
 import { Headbar, Post } from '../../components/index';
 import axios from 'axios';
-import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 
 const PostList = (props) => {

@@ -1,25 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { LogoutButton } from './logoutButton';
-import { useNavigation } from '@react-navigation/native';
-//import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 
 function Headbar(props) {
-
-  const navigation = useNavigation();
-  let logoutButton = null;
-
-  // console.log(navigation.getParam('loggedInStatus'))
-  console.log(props);
-
-  if (props.loggedInStatus === true) {
-    logoutButton = <LogoutButton />
-  }
 
   return (
     <View style={styles.header}>
       <Text style={styles.text}>IkeBook</Text>
-      {logoutButton}
+      {props.loggedInStatus ? <LogoutButton/> : null}
     </View>
   )
 }

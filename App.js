@@ -33,7 +33,6 @@ class App extends React.Component {
         this.handleLogout()
       }
     })
-    // .catch(() => this.props.history.push("/"));
   }
 
   handleLogin(data) {

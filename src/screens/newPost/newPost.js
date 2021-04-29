@@ -23,7 +23,7 @@ const CreatePost = (props, { navigation }) => {
 
   return(
     <View>
-    <Headbar/>
+    <Headbar {...props}/>
       <View style={styles.container}>
         <TextInput
         style={styles.textInput}
