@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LogInScreen /> renders correctly 1`] = `
+exports[`<CreatePost/> renders correctly 1`] = `
 <View>
   <View
     style={
@@ -34,15 +34,15 @@ exports[`<LogInScreen /> renders correctly 1`] = `
         "alignItems": "center",
         "backgroundColor": "#cdd7d6",
         "height": "100%",
-        "justifyContent": "center",
+        "justifyContent": "flex-start",
       }
     }
   >
     <TextInput
       allowFontScaling={true}
-      autoCapitalize="none"
       onChangeText={[Function]}
-      placeholder="username"
+      onKeyPress={[Function]}
+      placeholder="What is on your mind"
       rejectResponderTermination={true}
       style={
         Object {
@@ -55,40 +55,12 @@ exports[`<LogInScreen /> renders correctly 1`] = `
           "borderTopWidth": 1,
           "color": "black",
           "fontSize": 16,
+          "height": 100,
           "paddingBottom": 15,
           "paddingLeft": 14,
           "paddingRight": 14,
           "paddingTop": 15,
-          "width": 200,
-        }
-      }
-      type="text"
-      underlineColorAndroid="transparent"
-      value=""
-    />
-    <TextInput
-      allowFontScaling={true}
-      autoCapitalize="none"
-      onChangeText={[Function]}
-      placeholder="password"
-      rejectResponderTermination={true}
-      secureTextEntry={true}
-      style={
-        Object {
-          "backgroundColor": "white",
-          "borderBottomWidth": 1,
-          "borderColor": "#E1E5EA",
-          "borderLeftWidth": 1,
-          "borderRadius": 4,
-          "borderRightWidth": 1,
-          "borderTopWidth": 1,
-          "color": "black",
-          "fontSize": 16,
-          "paddingBottom": 15,
-          "paddingLeft": 14,
-          "paddingRight": 14,
-          "paddingTop": 15,
-          "width": 200,
+          "width": "80%",
         }
       }
       underlineColorAndroid="transparent"
@@ -138,53 +110,9 @@ exports[`<LogInScreen /> renders correctly 1`] = `
               ]
             }
           >
-            Log in
+            Create Post
           </Text>
         </View>
-      </View>
-    </View>
-    <Text>
-      Not a user yet?
-    </Text>
-    <View
-      accessibilityRole="button"
-      accessibilityState={Object {}}
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {},
-          ]
-        }
-      >
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#007AFF",
-                "fontSize": 18,
-                "margin": 8,
-                "textAlign": "center",
-              },
-            ]
-          }
-        >
-          Create an account!
-        </Text>
       </View>
     </View>
   </View>

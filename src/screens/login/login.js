@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useState, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button, TouchableOpacity} from 'react-native';
-import { Headbar } from '../../components/headbar'
+import { Headbar } from '../../components/headbar/headbar'
 
-const LogInScreen = (props, { route }) => {
+const LogInScreen = (props) => {
   const navigation = useNavigation();
 
   const [userName, setUserName] = useState('')

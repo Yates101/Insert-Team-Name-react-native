@@ -150,6 +150,7 @@ exports[`<SignUpScreen /> renders correctly 1`] = `
       allowFontScaling={true}
       autoCapitalize="none"
       onChangeText={[Function]}
+      onKeyPress={[Function]}
       placeholder="password"
       rejectResponderTermination={true}
       secureTextEntry={true}

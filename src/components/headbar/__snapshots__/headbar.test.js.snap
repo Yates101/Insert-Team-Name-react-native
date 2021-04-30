@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Headbar /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "flex-end",
+      "alignSelf": "stretch",
+      "backgroundColor": "#179aff",
+      "flexDirection": "row",
+      "height": 52,
+      "justifyContent": "space-between",
+      "paddingLeft": 10,
+      "paddingRight": 10,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#FFED00",
+        "fontSize": 32,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    IkeBook
+  </Text>
+</View>
+`;

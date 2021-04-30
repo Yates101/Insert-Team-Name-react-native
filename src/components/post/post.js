@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native'
 import axios from 'axios';
-import { IkeButton, CommentButton } from '../components/PostButtons';
+import { IkeButton, CommentButton } from '../PostButtons';
 import { useNavigation } from '@react-navigation/core';
 
 import dayjs from 'dayjs';
