@@ -1,3 +1,3 @@
 export * from './headbar';
-export * from './logoutButton';
-export * from './post';
+export * from './logoutButton/logoutButton';
+export * from './post/post';

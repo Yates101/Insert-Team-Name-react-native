@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Button, View, Text, Alert } from 'react-native';
+import { StyleSheet, Button, View, Text, Alert, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { LogInScreen } from '../screens/';
+import { LogInScreen } from '../../screens';
 // const navigation = useNavigation has to be inside LogoutButton, not destroySession
 // screenName passed in to destroySession function because it's called in the Button onPress
 // the screenName has to be the name of the screen as a string and not as a variable (e.g. "Log In" as opposed to LogInScreen)
@@ -33,17 +33,18 @@ function LogoutButton(props) {
 
 
   return (
-      <Button
-        style={styles.button}
+      <TouchableOpacity
         onPress={() => destroySession("Log In")}
-        title="Log out"/>
+        title="Log out"><Text style={styles.button}>Log Out</Text></TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    color: 'black',
+    margin: 8,
+    color: 'yellow',
     width: 100,
+    fontWeight: "bold",
   },
 })
 

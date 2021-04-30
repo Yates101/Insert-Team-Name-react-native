@@ -1,9 +1,10 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { useState, useEffect } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import { Headbar } from '../../components/headbar'
+import { Platform, StyleSheet, Text, View, TextInput, Button, TouchableOpacity} from 'react-native';
+import { Headbar } from '../../components/headbar/headbar'
 
-
-const LogInScreen = (props, { navigation, route }) => {
+const LogInScreen = (props) => {
+  const navigation = useNavigation();
 
   const [userName, setUserName] = useState('')
   const [passWord, setPassWord] = useState('')
@@ -23,12 +24,14 @@ const LogInScreen = (props, { navigation, route }) => {
     .then((json) => {
       if (json.logged_in === true) {
         props.handleLogin(json)
+        alert(`Welcome back ${userName} !`)
         props.navigation.navigate('Posts');
       } else if(json.status === 403) {
         alert(json.message)
       }
       })
     .catch((error) => console.error(error));
+
   };
 
   const keyPressed = (event) => {
@@ -56,14 +59,12 @@ const LogInScreen = (props, { navigation, route }) => {
         onKeyPress={(key) => keyPressed(key)}
         value={passWord}
       />
-      <View style={styles.buttonContainer}>
-        <Button
-        onPress={() => onSubmit()}
-        title="Log in" style={styles.button}/>
-      </View>
+      <TouchableOpacity onPress={() => onSubmit()}>
+        <Text style={styles.button}>Log In</Text>
+      </TouchableOpacity>
       <Text>Not a user yet?</Text>
       <Button style={styles.button}
-        onPress={() => props.navigation.navigate('Sign Up')}
+        onPress={() => navigation.navigate('Sign Up')}
         title="Create an account!"        
         />
       </View>
@@ -98,14 +99,16 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    color: 'black',
+    color: 'yellow',
     width: 100,
+    margin: 8,
+    fontSize: 24,
+    borderRadius: 3,
+    borderWidth: 1,
+    borderColor: "#009fe3",
+    backgroundColor: "#009fe3",
+    textAlign: 'center',
   },
-
-  buttonContainer: {
-    backgroundColor: 'blue',
-  }
-
 });
 
 export { LogInScreen };

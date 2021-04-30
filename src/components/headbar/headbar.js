@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { LogoutButton } from './logoutButton';
+import { LogoutButton } from '../logoutButton/logoutButton';
 
 function Headbar(props) {
 

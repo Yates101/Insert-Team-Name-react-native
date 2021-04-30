@@ -3,7 +3,7 @@ import Svg, { Rect, Path } from "react-native-svg"
 
 function IkeButton(props) {
 
-  const {color="#009fe3", width=40.35, heigth=30.24} = props
+  const {color="#009fe3", width=40.35, heigth=30.24, newcolor='red'} = props
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"

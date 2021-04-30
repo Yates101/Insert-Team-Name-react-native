@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Button, ScrollView } from 'react-native';
+import { StyleSheet, View, Button, ScrollView, SafeAreaView } from 'react-native';
 import { Headbar, Post } from '../../components/index';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
 const PostList = (props) => {
-  const {posts = []} = props
-  return posts.map((post)=> <Post key={post.id} {...post}/>)
+  const {posts = [], user} = props
+  return posts.map((post)=> <Post key={post.id} {...post} {...{user}}/>)
 }
 
-const PostsScreen = (props) => {
+const PostsScreen = (props, { route }) => {
+  const navigation = useNavigation()
 
-  console.log(props)
-  const navigation = useNavigation();
-  
   const [posts, setPosts] = useState([])
 
   const getPosts = async() => {
-    await axios.get("https://acebook--backend.herokuapp.com/posts").then((res) => {
+    await axios.get("http://localhost:3001/posts").then((res) => {
       setPosts(res.data)
     })
   }
@@ -29,11 +27,13 @@ const PostsScreen = (props) => {
   return (
     <View>
       <Headbar {...props}/>
+      <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
-          <PostList posts={posts}/>
+          <PostList posts={posts} user={props.user.id}/>
         </View>
-      </ScrollView>   
+      </ScrollView>  
+      </SafeAreaView> 
       <View style={styles.createPostButton}>
         <Button 
           style={styles.createPostButton} 
