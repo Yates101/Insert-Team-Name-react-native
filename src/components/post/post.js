@@ -60,7 +60,7 @@ const Post = ( { id: post_id, user_id: user_id, content: body, created_at: creat
       <View style={styles.row}>
         <Image
           style={styles.userImage}
-          source={require('../../assets/display.png')}
+          source={require('../../../assets/display.png')}
         />
         <Text style={styles.postBody}>{body}</Text>
       </View>
